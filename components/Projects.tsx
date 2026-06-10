@@ -23,9 +23,9 @@ const projects = [
   {
     name: 'Jobars-Events-Webpage',
     desc: 'A web application for managing events, featuring a user-friendly interface and real-time updates.',
-    link: 'https://github.com/Aljayz/Jobars-Events-Webpage',
-    visibility: 'public',
-    status: 'In Progress',
+    link: '#',
+    visibility: 'private',
+    status: 'Deployed',
   },
   {
     name: 'Cooperative Development Authority - Philippines',
