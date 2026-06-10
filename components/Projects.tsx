@@ -40,6 +40,13 @@ const projects = [
     link: 'https://github.com/Aljayz/TikTok-Like-Automated-Like-Spam-Web-Browser-Extension.git',
     visibility: 'public',
     status: 'Extensible',
+  },
+  {
+    name: 'Nexube',
+    desc: 'A desktop media streaming application built with Electron, React, and Vite — designed for multi-profile households with advanced playback control.',
+    link: 'https://github.com/Aljayz/nexube',
+    visibility: 'public',
+    status: 'v2.7.0'
   }
 ];
 
