@@ -23,7 +23,7 @@ const projects = [
   {
     name: 'Jobars-Events-Webpage',
     desc: 'A web application for managing events, featuring a user-friendly interface and real-time updates.',
-    link: '#',
+    link: 'https://jobars-events.aljayz.workers.dev/',
     visibility: 'private',
     status: 'Deployed',
   },
