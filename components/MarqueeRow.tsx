@@ -6,6 +6,7 @@ type MarqueeRowProps = {
   direction?: 'ltr' | 'rtl';
   speed?: number;
   repeat?: number;
+  paused?: boolean;
 };
 
 export default function MarqueeRow({
@@ -13,6 +14,7 @@ export default function MarqueeRow({
   direction = 'rtl',
   speed = 25,
   repeat = 1,
+  paused = false,
 }: MarqueeRowProps) {
   const animationStyle: React.CSSProperties = {
     display: 'flex',
@@ -21,6 +23,7 @@ export default function MarqueeRow({
     paddingRight: '0.75rem',
     flexShrink: 0,
     animation: `${direction === 'ltr' ? 'marquee-ltr' : 'marquee-rtl'} ${speed}s infinite linear`,
+    animationPlayState: paused ? 'paused' : 'running',
   };
 
   const renderRepeated = (key: string) =>
