@@ -1,38 +1,19 @@
 'use client';
-import Image from 'next/image';
+import React from 'react';
 
 type MarqueeRowProps = {
-  badges: string[];
-  badgesDup?: number;
+  children: React.ReactNode;
   direction?: 'ltr' | 'rtl';
   speed?: number;
-  itemStart?: 'first' | 'last';
+  repeat?: number;
 };
 
-function BadgeImage({ name }: { name: string }) {
-  const src = `https://img.shields.io/badge/${name}`;
-  return (
-    <Image
-      src={src}
-      alt={name.split('-')[0].replace(/_/g, ' ')}
-      width={0}
-      height={0}
-      className="h-7 md:h-8 w-auto badge-glow"
-      unoptimized
-    />
-  );
-}
-
 export default function MarqueeRow({
-  badges,
-  badgesDup = 1,
+  children,
   direction = 'rtl',
   speed = 25,
-  itemStart = 'first',
+  repeat = 1,
 }: MarqueeRowProps) {
-  const orderedBadges = itemStart === 'last' ? [...badges].reverse() : badges;
-  const duplicatedBadges = Array.from({ length: badgesDup }, () => orderedBadges).flat();
-
   const animationStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
@@ -42,13 +23,10 @@ export default function MarqueeRow({
     animation: `${direction === 'ltr' ? 'marquee-ltr' : 'marquee-rtl'} ${speed}s infinite linear`,
   };
 
-  const group = (suffix: string) => (
-    <div style={animationStyle} aria-hidden={suffix === 'b' ? true : undefined}>
-      {duplicatedBadges.map((badge, idx) => (
-        <BadgeImage key={`${badge}-${suffix}-${idx}`} name={badge} />
-      ))}
-    </div>
-  );
+  const renderRepeated = (key: string) =>
+    Array.from({ length: repeat }, (_, i) => (
+      <React.Fragment key={`${key}-${i}`}>{children}</React.Fragment>
+    ));
 
   return (
     <>
@@ -64,17 +42,27 @@ export default function MarqueeRow({
         .marquee-track:hover > div {
           animation-play-state: paused;
         }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track > div {
+            animation: none !important;
+          }
+        }
       `}</style>
       <div
         className="marquee-track"
         style={{
           display: 'flex',
           overflow: 'hidden',
+          padding: '8px 0',
           maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
         }}
       >
-        {group('a')}
-        {group('b')}
+        <div style={animationStyle}>
+          {renderRepeated('a')}
+        </div>
+        <div style={animationStyle} aria-hidden>
+          {renderRepeated('b')}
+        </div>
       </div>
     </>
   );

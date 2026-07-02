@@ -16,8 +16,8 @@ export default function Hero() {
             <Image
                 src={profilePic}
                 alt="Aljayz profile picture"
-                // No need for width/height - Next.js will automatically set them
-                placeholder="blur" // Optional: adds a blur-up effect
+                placeholder="blur"
+                sizes="(max-width: 768px) 160px, 192px"
             />
 
           </div>
@@ -34,13 +34,13 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="#projects"
-            className="px-8 py-3 bg-primary hover:bg-primary-dark rounded-full text-white font-semibold transition shadow-lg shadow-primary/30"
+            className="px-8 py-3 bg-primary hover:bg-primary-dark rounded-full text-white font-semibold transition duration-200 shadow-lg shadow-primary/30 cursor-pointer"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 border border-gray-500 hover:border-white rounded-full text-gray-300 hover:text-white transition"
+            className="px-8 py-3 border border-gray-500 hover:border-white rounded-full text-gray-300 hover:text-white transition duration-200 cursor-pointer"
           >
             Get in Touch
           </a>

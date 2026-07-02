@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#home">
-            <div className="relative w-30 h-20">
+            <div className="relative w-32 h-20">
                 <Image src={Aljayz} alt="Aljayz logo" fill className="object-contain" />
             </div>
           </a>
@@ -31,7 +31,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white transition-colors text-sm"
+                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm cursor-pointer"
               >
                 {link.label}
               </a>
@@ -39,7 +39,7 @@ export default function Navbar() {
           </div>
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-gray-300 hover:text-white"
+            className="md:hidden text-gray-300 hover:text-white cursor-pointer"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -61,7 +61,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

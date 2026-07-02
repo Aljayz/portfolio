@@ -47,6 +47,13 @@ const projects = [
     link: 'https://github.com/Aljayz/nexube',
     visibility: 'public',
     status: 'v2.7.0'
+  },
+  {
+    name: 'JobVest',
+    desc: 'AI employment platform for Mindanao that translates informal, vernacular work experience into formal competencies employers search — making the invisible workforce visible. Serves both formal and informal, white- and blue-collar workers.',
+    link: 'https://job-vest-web.vercel.app/',
+    visibility: 'private',
+    status: 'Deployed',
   }
 ];
 
@@ -61,8 +68,11 @@ const statusStyles: Record<string, string> = {
 export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text">
-        🚀 Projects
+      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text inline-flex items-center gap-3 justify-center">
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+        Projects
       </h2>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, idx) => {
@@ -105,10 +115,10 @@ export default function Projects() {
                 href={project.link}
                 target={project.link !== '#' ? '_blank' : undefined}
                 rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
-                className={`mt-auto inline-flex items-center gap-2 font-medium text-sm transition ${
+                className={`mt-auto inline-flex items-center gap-2 font-medium text-sm transition duration-200 ${
                   isLinkDisabled
                     ? 'text-gray-500 cursor-not-allowed pointer-events-none'
-                    : 'text-accent hover:text-white'
+                    : 'text-accent hover:text-white cursor-pointer'
                 }`}
               >
                 {project.visibility === 'private'

@@ -1,18 +1,17 @@
 @import "tailwindcss";
 
-/* Tailwind v4 custom theme (replaces tailwind.config.ts) */
 @theme {
-  --color-primary: #6C63FF;
-  --color-primary-dark: #4A42E8;
+  --color-primary: #7C3AED;
+  --color-primary-dark: #6D28D9;
+  --color-secondary: #6366F1;
   --color-dark: #0D1117;
   --color-dark-card: #161B22;
   --color-dark-border: #30363D;
-  --color-accent: #58A6FF;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --color-accent: #EC4899;
+  --font-heading: 'Share Tech Mono', monospace;
+  --font-body: 'Fira Code', monospace;
 }
 
-/* Global styles */
 html {
   scroll-behavior: smooth;
 }
@@ -20,22 +19,37 @@ html {
 body {
   background-color: var(--color-dark);
   color: #e5e7eb;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
 }
 
-/* Badge hover effect */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
 .badge-glow {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .badge-glow:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 12px rgba(108, 99, 255, 0.6);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
 }
 
-/* Gradient text for hero */
 .gradient-text {
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
