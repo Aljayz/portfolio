@@ -23,6 +23,18 @@ export default function Experience() {
 
         <div className="bg-dark-card border border-dark-border rounded-xl p-6">
           <h3 className="text-xl font-bold text-white">
+            3rd Runner Up – AWS Student Builder Innovation Cup 2026
+          </h3>
+          <p className="text-sm text-accent mt-1">
+            UP Mindanao, Davao City (June 27, 2026)
+          </p>
+          <p className="text-gray-400 mt-3">
+            Lead developer of JobVest — pitched and secured 3rd Runner Up out of 20 finalists.
+          </p>
+        </div>
+
+        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+          <h3 className="text-xl font-bold text-white">
             1st Runner Up – 2025 Philippine Army Capture the Flag Cyber Security Competition
           </h3>
           <p className="text-gray-400 mt-3">
@@ -41,7 +53,7 @@ export default function Experience() {
 
         <div className="bg-dark-card border border-dark-border rounded-xl p-6">
           <h3 className="text-xl font-bold text-white">BS Computer Science</h3>
-          <p className="text-sm text-accent mt-1">Mindanao State University – Marawi City (2022–Present)</p>
+          <p className="text-sm text-accent mt-1">Mindanao State University – Marawi City (July 2022 – July 2026)</p>
         </div>
       </div>
     </section>
