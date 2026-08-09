@@ -23,13 +23,25 @@ export default function Experience() {
 
         <div className="bg-dark-card border border-dark-border rounded-xl p-6">
           <h3 className="text-xl font-bold text-white">
+            3rd Placer – Ranaw Tech-Solve Hackathon 2026
+          </h3>
+          <p className="text-sm text-accent mt-1">
+            Provincial Hackathon by the Province of Lanao del Sur, Ranaw Business Hotel (July 15–17, 2026)
+          </p>
+          <p className="text-gray-400 mt-3">
+            Software Architect &amp; Backend Lead for Team DaVest. Architected the microservice-based PTCAO Digital File Inventory System and led backend implementation. Also contributed to frontend development.
+          </p>
+        </div>
+
+        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+          <h3 className="text-xl font-bold text-white">
             3rd Runner Up – AWS Student Builder Innovation Cup 2026
           </h3>
           <p className="text-sm text-accent mt-1">
             UP Mindanao, Davao City (June 27, 2026)
           </p>
           <p className="text-gray-400 mt-3">
-            Lead developer of JobVest — pitched and secured 3rd Runner Up out of 20 finalists.
+            Software Architect &amp; Lead Developer of JobVest — architected the system and led development, securing 3rd Runner Up out of 20 finalists.
           </p>
         </div>
 
@@ -52,8 +64,9 @@ export default function Experience() {
         </div>
 
         <div className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h3 className="text-xl font-bold text-white">BS Computer Science</h3>
-          <p className="text-sm text-accent mt-1">Mindanao State University – Marawi City (July 2022 – July 2026)</p>
+          <h3 className="text-xl font-bold text-white">BS Computer Science <span className="text-accent">• Cum Laude</span></h3>
+          <p className="text-sm text-accent mt-1">Mindanao State University – Main Campus, Marawi City</p>
+          <p className="text-gray-400 mt-1">Admitted August 1, 2022 — Graduated July 30, 2026</p>
         </div>
       </div>
     </section>

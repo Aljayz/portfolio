@@ -10,13 +10,15 @@ export default function About() {
       <div className="bg-dark-card border border-dark-border rounded-2xl p-8 shadow-xl">
         <p className="text-lg text-gray-300 leading-relaxed mb-4">
           Hi! I&apos;m <span className="font-semibold text-white">Aljayz</span> – a proactive,
-          growth-focused Junior Software Engineer candidate, currently pursuing a{' '}
-          <span className="text-accent">BS in Computer Science</span> at Mindanao State
-          University – Marawi City (2022–Present).
+          growth-oriented Junior Software Engineer, <span className="text-accent">Cum Laude</span> graduate of{' '}
+          <span className="text-accent">BS in Computer Science</span> from Mindanao State
+          University – Main Campus, Marawi City (2022–2026).
         </p>
         <p className="text-lg text-gray-300 leading-relaxed mb-4">
           I have hands-on experience in UI/UX design and frontend development, applied
-          during an internship at Centralized Cloud Computing International Inc.
+          during an internship at Centralized Cloud Computing International Inc., as well as
+          software architecture and backend development in hackathon settings — including the
+          AWS Student Builder Innovation Cup 2026 and the Ranaw Tech-Solve Hackathon 2026.
         </p>
         <p className="text-lg text-gray-300 leading-relaxed">
           Driven by a passion for continuous learning, I actively explore{' '}

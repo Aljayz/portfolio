@@ -38,6 +38,12 @@ const categories: Record<string, { title: string; items: TechItem[] }> = {
       { name: 'Quasar', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg', url: 'https://quasar.dev' },
       { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg', url: 'https://tailwindcss.com' },
       { name: 'Sequelize', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg', url: 'https://sequelize.org' },
+      { name: 'NestJS', icon: 'https://cdn.simpleicons.org/nestjs/FFFFFF', url: 'https://nestjs.com' },
+      { name: 'Prisma', icon: 'https://cdn.simpleicons.org/prisma/FFFFFF', url: 'https://prisma.io' },
+      { name: 'Electron', icon: 'https://cdn.simpleicons.org/electron/FFFFFF', url: 'https://electronjs.org' },
+      { name: 'Vite', icon: 'https://cdn.simpleicons.org/vite/FFFFFF', url: 'https://vite.dev' },
+      { name: 'Zustand', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', url: 'https://zustand-demo.pmnd.rs' },
+      { name: 'TanStack Query', icon: 'https://cdn.simpleicons.org/reactquery/FFFFFF', url: 'https://tanstack.com/query' },
     ],
   },
   databaseCloud: {
@@ -47,6 +53,7 @@ const categories: Record<string, { title: string; items: TechItem[] }> = {
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', url: 'https://mysql.com' },
       { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg', url: 'https://supabase.com' },
       { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg', url: 'https://firebase.google.com' },
+      { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg', url: 'https://redis.io' },
     ],
   },
   toolsDevOps: {
@@ -60,6 +67,9 @@ const categories: Record<string, { title: string; items: TechItem[] }> = {
       { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg', url: 'https://figma.com' },
       { name: 'Adobe Photoshop', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg', url: 'https://adobe.com/photoshop' },
       { name: 'Typst', icon: 'https://cdn.simpleicons.org/typst/239DAD', url: 'https://typst.app' },
+      { name: 'Turborepo', icon: 'https://cdn.simpleicons.org/turborepo/FFFFFF', url: 'https://turbo.build/repo' },
+      { name: 'Cloudflare Workers', icon: 'https://cdn.simpleicons.org/cloudflare/FFFFFF', url: 'https://workers.cloudflare.com' },
+      { name: 'MinIO', icon: 'https://cdn.simpleicons.org/minio/FFFFFF', url: 'https://min.io' },
     ],
   },
 };
