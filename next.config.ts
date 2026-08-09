@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   // Add the line below. Use the EXACT name of your new repository.
-  basePath: "/", 
+  basePath: "", 
   images: {
     unoptimized: true,
     remotePatterns: [
