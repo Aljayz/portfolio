@@ -8,8 +8,9 @@
   --color-dark-card: #161B22;
   --color-dark-border: #30363D;
   --color-accent: #EC4899;
-  --font-heading: 'Share Tech Mono', monospace;
-  --font-body: 'Fira Code', monospace;
+  --font-heading: var(--font-body);
+  --font-body: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 }
 
 html {
@@ -23,7 +24,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
 }
 
 .badge-glow {

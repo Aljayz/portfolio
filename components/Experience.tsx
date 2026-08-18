@@ -7,25 +7,17 @@ export default function Experience() {
         </svg>
         Experience & Achievements
       </h2>
-      <div className="space-y-8">
-        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h3 className="text-xl font-bold text-white">
-            UI/UX Designer Intern & Front End Developer Intern
-          </h3>
-          <p className="text-sm text-accent mt-1">
-            Centralized Cloud Computing International Inc., BGC, Taguig (June–July 2025)
-          </p>
-          <p className="text-gray-400 mt-3">
-            Delivered UI/UX designs 3× weekly using Figma & Adobe Photoshop, integrated
-            backend-to-frontend, and converted Figma designs into responsive web applications.
-          </p>
-        </div>
-
-        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h3 className="text-xl font-bold text-white">
-            3rd Placer – Ranaw Tech-Solve Hackathon 2026
-          </h3>
-          <p className="text-sm text-accent mt-1">
+      <div className="space-y-6">
+        <div className="bg-dark-card border border-dark-border border-l-2 border-l-primary rounded-xl p-6 shadow-lg">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="text-xl font-bold text-white">
+              <span className="text-primary">3rd Placer</span> – Ranaw Tech-Solve Hackathon 2026
+            </h3>
+            <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full font-mono">
+              3rd Place
+            </span>
+          </div>
+          <p className="text-sm text-secondary mt-1">
             Provincial Hackathon by the Province of Lanao del Sur, Ranaw Business Hotel (July 15–17, 2026)
           </p>
           <p className="text-gray-400 mt-3">
@@ -33,15 +25,33 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h3 className="text-xl font-bold text-white">
-            3rd Runner Up – AWS Student Builder Innovation Cup 2026
-          </h3>
-          <p className="text-sm text-accent mt-1">
+        <div className="bg-dark-card border border-dark-border border-l-2 border-l-primary rounded-xl p-6 shadow-lg">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="text-xl font-bold text-white">
+              <span className="text-primary">3rd Runner Up</span> – AWS Student Builder Innovation Cup 2026
+            </h3>
+            <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full font-mono">
+              Top 20
+            </span>
+          </div>
+          <p className="text-sm text-secondary mt-1">
             UP Mindanao, Davao City (June 27, 2026)
           </p>
           <p className="text-gray-400 mt-3">
             Software Architect &amp; Lead Developer of JobVest — architected the system and led development, securing 3rd Runner Up out of 20 finalists.
+          </p>
+        </div>
+
+        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+          <h3 className="text-xl font-bold text-white">
+            UI/UX Designer Intern & Front End Developer Intern
+          </h3>
+          <p className="text-sm text-secondary mt-1">
+            Centralized Cloud Computing International Inc., BGC, Taguig (June–July 2025)
+          </p>
+          <p className="text-gray-400 mt-3">
+            Delivered UI/UX designs 3× weekly using Figma & Adobe Photoshop, integrated
+            backend-to-frontend, and converted Figma designs into responsive web applications.
           </p>
         </div>
 
@@ -64,8 +74,8 @@ export default function Experience() {
         </div>
 
         <div className="bg-dark-card border border-dark-border rounded-xl p-6">
-          <h3 className="text-xl font-bold text-white">BS Computer Science <span className="text-accent">• Cum Laude</span></h3>
-          <p className="text-sm text-accent mt-1">Mindanao State University – Main Campus, Marawi City</p>
+          <h3 className="text-xl font-bold text-white">BS Computer Science <span className="text-primary">• Cum Laude</span></h3>
+          <p className="text-sm text-secondary mt-1">Mindanao State University – Main Campus, Marawi City</p>
           <p className="text-gray-400 mt-1">Admitted August 1, 2022 — Graduated July 30, 2026</p>
         </div>
       </div>

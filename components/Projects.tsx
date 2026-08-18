@@ -6,6 +6,23 @@ import GitHubStars from './GitHubStars';
 
 const projects = [
   {
+    name: 'JobVest',
+    desc: 'AI employment platform for Mindanao that translates informal, vernacular work experience into formal competencies employers search — making the invisible workforce visible. Serves both formal and informal, white- and blue-collar workers.',
+    link: 'https://job-vest-web.vercel.app/',
+    visibility: 'private',
+    status: 'Deployed',
+    repoLink: 'https://github.com/Aljayz/JobVest',
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Supabase', 'Prisma', 'Firebase Auth', 'Gemini AI', 'Groq', 'PWA', 'Turborepo'],
+  },
+  {
+    name: 'PTCAO Digital File Inventory System',
+    desc: 'A microservice-based digital file inventory and records management system for the Provincial Tourism, Culture and the Arts Office of Lanao del Sur. Designed for offline-capable field use and government-grade document tracking.',
+    link: 'https://github.com/LanaoDelSur-ICTO-Hackathon2026',
+    visibility: 'private',
+    status: 'In Progress',
+    techStack: ['NestJS 11', 'Next.js 16', 'TypeScript', 'PostgreSQL 15', 'Prisma 6', 'MinIO', 'Redis', 'Docker Compose', 'Tailwind CSS', 'BullMQ', 'TanStack Query', 'Dexie.js', 'Recharts', 'JWT', 'Python'],
+  },
+  {
     name: 'Parallel-and-Distributed-Merge-Sort-Implementations',
     desc: 'A research comparison of sequential vs. parallel Merge Sort using MPI4PY, Python, and NumPy. Evaluates performance scalability in distributed systems through multi-processor sorting and merging.',
     link: 'https://github.com/Aljayz/Parallel-and-Distributed-Merge-Sort-Implementations',
@@ -61,34 +78,110 @@ const projects = [
     status: 'v2.7.0',
     techStack: ['Electron', 'React', 'Vite', 'TypeScript', 'JavaScript', 'Python'],
   },
-  {
-    name: 'JobVest',
-    desc: 'AI employment platform for Mindanao that translates informal, vernacular work experience into formal competencies employers search — making the invisible workforce visible. Serves both formal and informal, white- and blue-collar workers.',
-    link: 'https://job-vest-web.vercel.app/',
-    visibility: 'private',
-    status: 'Deployed',
-    repoLink: 'https://github.com/Aljayz/JobVest',
-    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Supabase', 'Prisma', 'Firebase Auth', 'Gemini AI', 'Groq', 'PWA', 'Turborepo'],
-  },
-  {
-    name: 'PTCAO Digital File Inventory System',
-    desc: 'A microservice-based digital file inventory and records management system for the Provincial Tourism, Culture and the Arts Office of Lanao del Sur. Designed for offline-capable field use and government-grade document tracking.',
-    link: 'https://github.com/LanaoDelSur-ICTO-Hackathon2026',
-    visibility: 'private',
-    status: 'In Progress',
-    techStack: ['NestJS 11', 'Next.js 16', 'TypeScript', 'PostgreSQL 15', 'Prisma 6', 'MinIO', 'Redis', 'Docker Compose', 'Tailwind CSS', 'BullMQ', 'TanStack Query', 'Dexie.js', 'Recharts', 'JWT', 'Python'],
-  }
 ];
 
 const statusStyles: Record<string, string> = {
   'In Progress': 'bg-yellow-500/20 text-yellow-400',
   'Cancelled': 'bg-red-500/20 text-red-400',
   'Extensible': 'bg-purple-500/20 text-purple-400',
-  'Deployed': 'bg-blue-500/20 text-blue-400', // Added a styling rule for "Deployed"
+  'Deployed': 'bg-blue-500/20 text-blue-400',
 };
+
+const FEATURED_NAMES = ['JobVest', 'PTCAO Digital File Inventory System'];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showMore, setShowMore] = useState(true);
+
+  const featured = projects.filter((p) => FEATURED_NAMES.includes(p.name));
+  const minor = projects.filter((p) => !FEATURED_NAMES.includes(p.name));
+
+  const renderProjectCard = (project: (typeof projects)[number], featuredCard: boolean) => {
+    const isLinkDisabled = project.visibility === 'private' && project.status !== 'Deployed';
+    const showDetails = project.status !== 'Cancelled';
+
+    return (
+      <div
+        key={project.name}
+        className={`bg-dark-card border border-dark-border rounded-xl flex flex-col justify-between hover:border-primary/50 transition-colors shadow-lg ${
+          featuredCard
+            ? 'p-8 md:p-8 hover:shadow-[0_0_30px_rgba(124,58,237,0.25)]'
+            : 'p-6'
+        }`}
+      >
+        <div>
+          <div className="flex flex-wrap gap-2 mb-2 justify-end">
+            <span className="text-xs bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full capitalize">
+              {project.visibility}
+            </span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full ${
+                statusStyles[project.status] || 'bg-gray-700 text-gray-300'
+              }`}
+            >
+              {project.status}
+            </span>
+            {project.name === 'Nexube' && (
+              <GitHubStars repo="Aljayz/nexube" />
+            )}
+          </div>
+
+          <h3 className={`font-bold text-white leading-tight mb-3 ${featuredCard ? 'text-2xl' : 'text-xl'}`}>
+            {project.name}
+          </h3>
+
+          <p className={`text-gray-400 leading-relaxed mb-6 ${featuredCard ? 'text-base' : 'text-sm'}`}>
+            {project.desc}
+          </p>
+
+          {project.techStack && (
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {project.techStack.slice(0, featuredCard ? 12 : 6).map((tech) => (
+                <span key={tech} className="text-[11px] bg-white/[5%] border border-dark-border text-gray-400 px-2 py-0.5 rounded-full font-mono">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3 mt-auto">
+          <a
+            href={project.link}
+            target={project.link !== '#' ? '_blank' : undefined}
+            rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
+            className={`inline-flex items-center gap-2 font-medium text-sm transition duration-200 ${
+              isLinkDisabled
+                ? 'text-gray-500 cursor-not-allowed pointer-events-none'
+                : 'text-primary hover:text-secondary cursor-pointer'
+            }`}
+          >
+            {project.visibility === 'private'
+              ? project.status === 'Deployed' ? 'View Page' : 'Confidential'
+              : 'View Repository'}
+            
+            {(!isLinkDisabled && project.link !== '#') && (
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            )}
+          </a>
+
+          {showDetails && (
+            <button
+              onClick={() => setSelectedProject(project)}
+              className="inline-flex items-center gap-2 font-medium text-sm text-gray-400 hover:text-white transition duration-200 cursor-pointer ml-auto"
+            >
+              Details
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto">
@@ -98,81 +191,35 @@ export default function Projects() {
         </svg>
         Projects
       </h2>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, idx) => {
-          const isLinkDisabled = project.visibility === 'private' && project.status !== 'Deployed';
-          const showDetails = project.status !== 'Cancelled';
 
-          return (
-            <div
-              key={idx}
-              className="bg-dark-card border border-dark-border rounded-xl p-6 flex flex-col justify-between hover:border-primary/50 transition-colors shadow-lg"
-            >
-              <div>
-                <div className="flex gap-2 mb-2 justify-end">
-                  <span className="text-xs bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full capitalize">
-                    {project.visibility}
-                  </span>
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full ${
-                      statusStyles[project.status] || 'bg-gray-700 text-gray-300'
-                    }`}
-                  >
-                    {project.status}
-                  </span>
-                  {project.name === 'Nexube' && (
-                    <GitHubStars repo="Aljayz/nexube" />
-                  )}
-                </div>
-
-                <h3 className="text-xl font-bold text-white leading-tight mb-3">
-                  {project.name}
-                </h3>
-
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  {project.desc}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 mt-auto">
-                <a
-                  href={project.link}
-                  target={project.link !== '#' ? '_blank' : undefined}
-                  rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
-                  className={`inline-flex items-center gap-2 font-medium text-sm transition duration-200 ${
-                    isLinkDisabled
-                      ? 'text-gray-500 cursor-not-allowed pointer-events-none'
-                      : 'text-accent hover:text-white cursor-pointer'
-                  }`}
-                >
-                  {project.visibility === 'private'
-                    ? project.status === 'Deployed' ? 'View Page' : 'Confidential'
-                    : 'View Repository'}
-                  
-                  {(!isLinkDisabled && project.link !== '#') && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  )}
-                </a>
-
-                {showDetails && (
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center gap-2 font-medium text-sm text-gray-400 hover:text-white transition duration-200 cursor-pointer ml-auto"
-                  >
-                    Details
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            </div>
-          );
-        })}
+      {/* Featured projects */}
+      <div className="grid gap-8 md:grid-cols-2 mb-10">
+        {featured.map((project) => renderProjectCard(project, true))}
       </div>
-      <p className="text-center text-gray-500 mt-10 italic">More coming soon...</p>
+
+      {/* Minor projects */}
+      {showMore && (
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {minor.map((project) => renderProjectCard(project, false))}
+        </div>
+      )}
+
+      <div className="flex justify-center mt-10">
+        <button
+          onClick={() => setShowMore(!showMore)}
+          className="inline-flex items-center gap-2 px-6 py-2.5 border border-primary/50 hover:border-primary text-gray-200 hover:text-white rounded-full text-sm transition duration-200 cursor-pointer"
+        >
+          {showMore ? 'Show Less' : 'Show More'}
+          <svg
+            className={`w-4 h-4 transition-transform duration-200 ${showMore ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
 
       {selectedProject && (
         <ProjectDetails

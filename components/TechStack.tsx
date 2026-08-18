@@ -1,13 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { useState } from 'react';
-import MarqueeRow from './MarqueeRow';
 
 type TechItem = {
   name: string;
   icon: string;
   url: string;
 };
+
+const primaryStack: { group: string; items: { name: string; icon: string; url: string; role: string }[] }[] = [
+  {
+    group: 'Frontend & Mobile',
+    items: [
+      { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', url: 'https://react.dev', role: 'Frontend' },
+      { name: 'React Native', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', url: 'https://reactnative.dev', role: 'Mobile Frontend' },
+      { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF', url: 'https://nextjs.org', role: 'React Framework' },
+      { name: 'Expo', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg', url: 'https://expo.dev', role: 'RN Framework' },
+      { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg', url: 'https://tailwindcss.com', role: 'Styling' },
+    ],
+  },
+  {
+    group: 'Backend & Data',
+    items: [
+      { name: 'NestJS', icon: 'https://cdn.simpleicons.org/nestjs/E0234E', url: 'https://nestjs.com', role: 'Microservices' },
+      { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg', url: 'https://redis.io', role: 'Server-side Caching' },
+      { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', url: 'https://postgresql.org', role: 'Database' },
+      { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg', url: 'https://firebase.google.com', role: 'BaaS' },
+      { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg', url: 'https://supabase.com', role: 'BaaS' },
+    ],
+  },
+  {
+    group: 'DevOps & Tooling',
+    items: [
+      { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', url: 'https://docker.com', role: 'Containerization' },
+      { name: 'Cloudflare', icon: 'https://cdn.simpleicons.org/cloudflare/FFFFFF', url: 'https://workers.cloudflare.com', role: 'Deployment' },
+      { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel/FFFFFF', url: 'https://vercel.com', role: 'Deployment' },
+      { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg', url: 'https://git-scm.com', role: 'Version Control' },
+      { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/FFFFFF', url: 'https://github.com', role: 'Version Control' },
+      { name: 'Markdown', icon: 'https://cdn.simpleicons.org/markdown/FFFFFF', url: 'https://daringfireball.net/projects/markdown', role: 'Documentation' },
+    ],
+  },
+];
 
 const categories: Record<string, { title: string; items: TechItem[] }> = {
   languages: {
@@ -79,18 +112,19 @@ function TechIcon({ name, src }: { name: string; src: string }) {
 
   if (failed) {
     return (
-      <div className="h-14 w-14 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">
+      <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">
         {name[0]}
       </div>
     );
   }
 
   return (
-    <div className="h-14 w-14 rounded-xl bg-white/[7%] flex items-center justify-center shrink-0 shadow-[inset_0_0_8px_rgba(124,58,237,0.15),0_0_12px_rgba(124,58,237,0.25)] group-hover:shadow-[inset_0_0_12px_rgba(124,58,237,0.25),0_0_20px_rgba(124,58,237,0.4)] transition-shadow duration-200">
+    <div className="h-12 w-12 rounded-lg bg-white/[7%] flex items-center justify-center shrink-0 shadow-[inset_0_0_8px_rgba(124,58,237,0.15),0_0_12px_rgba(124,58,237,0.25)] group-hover:shadow-[inset_0_0_12px_rgba(124,58,237,0.25),0_0_20px_rgba(124,58,237,0.4)] transition-shadow duration-200">
       <img
         src={src}
         alt={name}
-        className="h-9 w-9 object-contain drop-shadow-[0_0_4px_rgba(124,58,237,0.4)] group-hover:drop-shadow-[0_0_8px_rgba(124,58,237,0.6)] transition-all duration-200"
+        title={name}
+        className="h-8 w-8 object-contain drop-shadow-[0_0_4px_rgba(124,58,237,0.4)] group-hover:drop-shadow-[0_0_8px_rgba(124,58,237,0.6)] transition-all duration-200"
         onError={() => setFailed(true)}
       />
     </div>
@@ -103,33 +137,71 @@ function TechCard({ name, icon, url }: TechItem) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-dark-card border border-dark-border rounded-xl p-5 flex flex-col items-center gap-3 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all duration-200 group w-36 h-32 shrink-0 cursor-pointer"
+      title={name}
+      className="flex items-center justify-center group cursor-pointer"
     >
       <TechIcon name={name} src={icon} />
-      <span className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors duration-200 text-center leading-tight">
-        {name}
-      </span>
     </a>
   );
 }
 
-function CategorySection({ title, items, direction, repeat }: { title: string; items: TechItem[]; direction: 'ltr' | 'rtl'; repeat: number }) {
-  const [hovered, setHovered] = useState(false);
-
+function CategoryCard({ title, items }: { title: string; items: TechItem[] }) {
   return (
-    <div
-      className="mb-10"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <h3 className="text-xl font-semibold text-gray-200 mb-6 text-center">
+    <div className="bg-dark-card border border-dark-border rounded-2xl p-6 shadow-lg">
+      <h3 className="text-lg font-semibold text-gray-200 mb-5 flex items-center gap-2">
+        <span className="w-1.5 h-5 rounded-full bg-primary inline-block" />
         {title}
       </h3>
-      <MarqueeRow direction={direction} speed={35} repeat={repeat} paused={hovered}>
+      <div className="flex flex-wrap gap-4">
         {items.map((item) => (
           <TechCard key={item.name} name={item.name} icon={item.icon} url={item.url} />
         ))}
-      </MarqueeRow>
+      </div>
+    </div>
+  );
+}
+
+function PrimaryStackHighlight() {
+  return (
+    <div className="mb-12">
+      <h3 className="text-xl font-semibold text-gray-200 mb-6 text-center flex items-center justify-center gap-2">
+        <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+        </svg>
+        My Primary Stack
+      </h3>
+      <div className="space-y-6">
+        {primaryStack.map(({ group, items }) => (
+          <div key={group}>
+            <p className="text-xs uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2 justify-center">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+              {group}
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {items.map(({ name, icon, url, role }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${name} — ${role}`}
+                  className="bg-dark-card border border-dark-border rounded-lg px-3.5 py-2 flex items-center gap-2.5 hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-200 group shrink-0 cursor-pointer"
+                >
+                  <img
+                    src={icon}
+                    alt={name}
+                    className="h-5 w-5 object-contain group-hover:drop-shadow-[0_0_6px_rgba(124,58,237,0.6)] transition-all duration-200"
+                  />
+                  <div className="text-left">
+                    <span className="block text-sm font-medium text-gray-200 leading-tight">{name}</span>
+                    <span className="block text-[10px] text-gray-500 leading-tight">{role}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -146,15 +218,13 @@ export default function TechStack() {
         Tech Stack
       </h2>
 
-      {entries.map(([key, { title, items }], i) => (
-        <CategorySection
-          key={key}
-          title={title}
-          items={items}
-          direction={i % 2 === 0 ? 'rtl' : 'ltr'}
-          repeat={key === 'databaseCloud' ? 4 : 1}
-        />
-      ))}
+      <PrimaryStackHighlight />
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {entries.map(([key, { title, items }]) => (
+          <CategoryCard key={key} title={title} items={items} />
+        ))}
+      </div>
     </section>
   );
 }
